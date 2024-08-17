@@ -5,6 +5,10 @@ pipeline {
     //        args '-v /root/.m2:/root/.m2'
     //    }
     //}
+    tools {
+        maven 'm3' // This is the name you gave to your Maven installation in Global Tool Configuration
+    }
+
     agent any
     stages {
         stage('Build') {

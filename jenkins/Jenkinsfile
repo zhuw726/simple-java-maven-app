@@ -8,7 +8,11 @@ pipeline {
     tools {
         maven 'm3' // This is the name you gave to your Maven installation in Global Tool Configuration
     }
-
+    parameters {
+        string(name: 'ENVIRONMENT', defaultValue: 'dev', description: 'Environment to deploy to')
+        booleanParam(name: 'RUN_TESTS', defaultValue: true, description: 'Whether to run tests')
+        choice(name: 'DEPLOYMENT_SERVER', choices: ['staging', 'production'], description: 'Choose the deployment server')
+    }
     agent any
     stages {
         stage('Build') {
